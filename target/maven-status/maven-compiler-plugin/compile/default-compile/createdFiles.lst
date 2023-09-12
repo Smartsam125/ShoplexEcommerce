@@ -1,0 +1,9 @@
+user\AddToCartServlet.class
+user\Cart.class
+com\insertdata\InsertData.class
+com\connectionObect\QuerryProducts.class
+com\logout\logout.class
+user\product.class
+com\connection\Conn.class
+com\connectionObect\CheckButtons.class
+com\connectionObect\RemoveFromCart.class
