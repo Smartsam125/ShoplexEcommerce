@@ -10,9 +10,10 @@ public class product {
     private   String category;
     private    int customerId;
     private  String Description;
+    private  int likes;
     
     public product(){}
-    public product(int productid,String productName,double unitPrice,String imagesource,String category,int customerId,String Description){
+    public product(int productid,String productName,double unitPrice,String imagesource,String category,int customerId,String Description,int likes){
         this.productid=productid;
         this.category=category;
         this.productName=productName;
@@ -20,6 +21,7 @@ public class product {
         this.imagesource=imagesource;
         this.customerId=customerId;
         this.Description=Description;
+        this.likes=likes;
         
                 
         
@@ -44,6 +46,12 @@ public class product {
     }
     public String getDescription(){
         return Description;
+    }
+    public  int getLikes(){
+        return likes;
+    }
+    public void setLikes(int likes){
+        this.likes=likes;
     }
 
 }

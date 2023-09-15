@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        
-        <title></title>
+        <title>Search-Items</title>
     </head>
     <body>
          
@@ -28,7 +28,7 @@
             Statement stNew = connection.createStatement();         
             ResultSet rsNew = st.executeQuery("SELECT * FROM PRODUCTS WHERE pdt_name REGEXP '"+search+"'");%>
              <div class="container">
-                                <div class="card-header my-3 h1">HERE ARE YOUR SEARCH </div>
+                                <div class="card-header my-3 h1">Search Results</div>
                                 <div class="row">
             
          <%
@@ -39,16 +39,16 @@
                   
                             <div class="col-md-3 my-3">
                                         <div class="card w-100" style="width:18rem;">
-                                            <img class="card-img-top" src="/SHOPLEXMAIN/images/<%=rsNew.getString("image_source")%>" alt="Car">
+                                            <img class="card-img-top" src="/ShoplexEcommerce/images/<%=rsNew.getString("image_source")%>" alt="Car">
                                             <div class="card-body">
                                                 <h5 class="card-title"><%=rsNew.getString("pdt_name")%></h5>
                                                 <h6 price="price">Price:UGX <%=rsNew.getString("unitPrice")%></h6>
                                                 <div class="mt-3 d-flex justify-content-between">
                                                     <% if(username!=null){%>
-                                                     <a href="/SHOPLEXMAIN/AddToCartServlet?id=<%=rsNew.getInt("productID")%>" class="btn btn-primary">AddToCart</a>
+                                                     <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=rsNew.getInt("productID")%>" class="btn btn-primary">AddToCart</a>
                                                      <a href="likes.jsp?productId=<%out.println(rsNew.getInt("productID"));%>" ><i class="bi bi-hand-thumbs-up">Like</i> </a>
                                                     <%} else{%>
-                                                    <a href="/SHOPLEXMAIN/AddToCartServlet?id=<%=rsNew.getInt("productID")%>" class="btn btn-primary">AddToCart</a>
+                                                    <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=rsNew.getInt("productID")%>" class="btn btn-primary">AddToCart</a>
                                                    
                                                      <a href="likes.jsp?productId=<%out.println(rsNew.getInt("productID"));%> "id="disable"><i class="bi bi-hand-thumbs-up">Like</i></a><%
 //                                                     session.setAttribute("productId",p.getId());

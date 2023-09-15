@@ -15,7 +15,7 @@ public class QuerryProducts {
         List<product> products = new ArrayList<product>();
         
         try{
-            query="select productID,pdt_name,unitPrice,image_source,Description from products";
+            query="select productID,pdt_name,unitPrice,image_source,Description,likes from products";
             st=this.con.prepareStatement(query);
            rs= st.executeQuery();
            
@@ -26,6 +26,7 @@ public class QuerryProducts {
                row.setUnitprice(rs.getDouble("unitPrice"));
                row.setImagesource((rs.getString("image_source")));
               row.setDescription(rs.getString("Description"));
+              row.setLikes(rs.getInt("likes"));
                
               
                products.add(row);

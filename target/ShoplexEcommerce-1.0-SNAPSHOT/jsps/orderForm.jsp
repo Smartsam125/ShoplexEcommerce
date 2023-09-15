@@ -80,7 +80,7 @@
                      <td><%=c.getUnitprice()%></td>
                      
                      <td>
-                         <form action="/ShoplexEcommerce/InsertData" method="post" class="form-inline">
+                         <form action="/ShoplexEcommerce/InsertData?productId=<%=c.getId()%>" method="post" class="form-inline">
                              <input type="hidden" name="id" value="<%=c.getProductName()%>" class="form-iput"><!-- comment -->
                              <div class="form-group d-flex justify-content-between w-50">
                                  <a class="btn btn-sm btn-decre" href="/ShoplexEcommerce/CheckButtons?action=dec&id=<%=c.getId()%>"><i class="fas fa-minus-square"></i></a>
@@ -92,7 +92,7 @@
                              
                          </form>
                      </td>
-                     <td ><a href="/ShoplexEcommerce/RemoveFromCart?id=<%=c.getId()%>" class="btn btn-sm btn-success display-1">UnDO</a></td>
+                     <td ><a href="/ShoplexEcommerce/RemoveFromCart?id=<%=c.getId()%>" class="btn btn-sm btn-success display-1">Remove</a></td>
                      <!-- comment -->
                          </tr>
                         <% } %>

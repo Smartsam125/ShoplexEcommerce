@@ -26,45 +26,78 @@ List<product>  products = pdts.getAllProducts();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="navbar.jsp" %>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+     .product-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .like-button {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .bi-hand-thumbs-up {
+        margin-right: 5px;
+    }
+
+    .likes-count {
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 20px;
+    }
+</style>
         
 
         <title>products</title>
     </head>
-    <body>
-        
-        <!-- Querrying user results from the database -->                        
-                            <div class="container bg-muted">
+    <body>    
+                               <div class="container bg-muted">
                                 <div class="card-header my-3 ">CURRENT PRODUCTS </div>
                                 <div class="row">
                                     <% if(!products.isEmpty()){
                                     for(product p:products){
                                         %>
-                                    <div class="col-md-3 my-3">
-                                        <div class="card w-100  border-0 bg-muted" style="width:18rem;outline: none;">
-                                            <img class="card-img-top" src="/ShoplexEcommerce/images/<%=p.getImagesource()%>" alt="<%=p.getProductName()%>">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%=p.getProductName()%></h5>
-                                                <h6 price="price">Price:UGX <%=p.getUnitprice()%></h6>
-                                                <h7><%=p.getDescription()%></h7>
-                                                <div class="mt-3 d-flex justify-content-between">
-                                                    <% if(username!=null){%>
-                                                     <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=p.getId()%>" class="btn btn-primary">AddToCart</a>
-                                                     <a href="likes.jsp?productID=<%out.println(p.getId());%>" ><i class="bi bi-hand-thumbs-up" >Like</i></a>
-                                                    <%} else{%>
-                                                    <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=p.getId()%>" class="btn btn-primary">AddToCart</a>
-                                                   
-                                                     <a href="likes.jsp?productID=<%out.println(p.getId());%> "id="disable"><i class="bi bi-hand-thumbs-up">Like</i></a><%
-//                                                     session.setAttribute("productId",p.getId());
-                                                   %>
-                                                   <%}%>
-                                                </div>
-                                               
-                                              
-                                                
-                                            </div>
-                                            <!-- comment -->
-                                        </div>
-                                    </div>
+                                   <div class="col-md-4 my-3">
+    <div class="card border-0 shadow-sm">
+        <img class="card-img-top" src="/ShoplexEcommerce/images/<%=p.getImagesource()%>" height="400px" width="200px" alt="<%=p.getProductName()%>">
+        <div class="card-body">
+            <h5 class="card-title"><%=p.getProductName()%></h5>
+            <p class="card-text"><%=p.getDescription()%></p>
+            <h6 class="card-price">Price: UGX <%=p.getUnitprice()%></h6>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <% if(username != null) { %>
+                <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=p.getId()%>" class="btn btn-primary">Add to Cart</a>
+                <a href="likes.jsp?productID=<%=p.getId()%>" class="btn btn-secondary">
+                    <i class="bi bi-hand-thumbs-up"></i> Like
+                </a>
+                    
+            <% } else { %>
+                <div class="product-item">
+    <a href="/ShoplexEcommerce/AddToCartServlet?id=<%=p.getId()%>" class="btn btn-primary">Add to Cart</a>
+    <a href="likes.jsp?productID=<%=p.getId()%>" class="like-button">
+        <i class="bi bi-hand-thumbs-up"></i> Like
+    </a>
+    <div class="likes-count">
+        <span><%= p.getLikes() %></span>
+    </div>
+</div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
                                         <%}}%>
                                
                                 </div>

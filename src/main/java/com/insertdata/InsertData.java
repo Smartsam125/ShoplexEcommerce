@@ -27,7 +27,8 @@ public class InsertData extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
          String username=(String)request.getSession().getAttribute("username");
-         String productName =request.getParameter("id");
+         out.println(username);
+         String productName =request.getParameter("productId");
          out.println(productName);
          
           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
@@ -45,19 +46,21 @@ public class InsertData extends HttpServlet {
             out.println("<body>");
             if(username!=null){}
             try{
-            conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/shoplex","root","Samsonmuj3@");
-           
             
-             query="select customerID from customer where email ='"+username+"'";
-             st =conn.createStatement();
-         ResultSet res=st.executeQuery(query);
+            conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/shoplex","root","Samsonmuj3@");
+            String  query1="select customerID from customer where email=?";
+            
+            PreparedStatement pst = conn.prepareStatement(query1);
+            pst.setString(1, username);
+ 
+         ResultSet res=pst.executeQuery();
          while(res.next()){
              int quantityOfpdts =Integer.parseInt(request.getParameter("quantity"));
                 //out.println(quantityOfpdts);
                 if(quantityOfpdts<=0){
                     quantityOfpdts=1;
                 }
-              String  query2="insert into Orders(pdt_name,customerID,quantity,date) values(?,?,?,?)";
+              String  query2="insert into orders(ProductId,CustomerID,Quantity,date) values(?,?,?,?)";
              PreparedStatement rs =conn.prepareStatement(query2);
              rs.setString(1,productName );
              rs.setInt(2,res.getInt("customerID") );
@@ -85,7 +88,7 @@ public class InsertData extends HttpServlet {
          }
              
             }catch(SQLException k){
-                out.println(k.getMessage());
+                out.println(k.getCause());
             }
            
             out.println("</body>");

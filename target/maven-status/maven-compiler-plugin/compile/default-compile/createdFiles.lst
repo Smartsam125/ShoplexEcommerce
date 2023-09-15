@@ -5,5 +5,7 @@ com\connectionObect\QuerryProducts.class
 com\logout\logout.class
 user\product.class
 com\connection\Conn.class
+com\connection\LogInDao.class
 com\connectionObect\CheckButtons.class
 com\connectionObect\RemoveFromCart.class
+user\CheckOut.class
