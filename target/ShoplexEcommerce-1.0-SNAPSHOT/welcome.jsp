@@ -9,9 +9,7 @@
 <%@page import="user.*" %>
 
 
-<%   //out.println(Conn.getConnection());
-    
-    //String username=(String)session.getAttribute("username");
+<%   
     
 QuerryProducts pdts =new QuerryProducts(Conn.getConnection());
 List<product>  products = pdts.getAllProducts();
@@ -66,7 +64,7 @@ List<product>  products = pdts.getAllProducts();
                                               
                                                 
                                             </div>
-                                            <!-- comment -->
+                                            
                                         </div>
                                     </div>
                                         <%}}%>

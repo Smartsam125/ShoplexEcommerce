@@ -26,8 +26,34 @@ List<product>  products = pdts.getAllProducts();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="navbar.jsp" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
+           
+   @media (min-width: 768px) and (max-width: 991px) {
+    /* Add tablet-specific styles here */
+}
+
+
+@media (max-width: 767px) {
+   
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 10px;
+    }
+    .container {
+        text-align: center;
+    }
+    .col-md-4 {
+        flex: 0 0 100%; /* Full width on mobile */
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+}
+
      .product-item {
         display: flex;
         align-items: center;
@@ -57,7 +83,8 @@ List<product>  products = pdts.getAllProducts();
         border-radius: 20px;
     }
 </style>
-        
+        <link rel="stylesheet" type="text/css" href="jsps/styles.css">
+
 
         <title>products</title>
     </head>
@@ -103,6 +130,27 @@ List<product>  products = pdts.getAllProducts();
                                 </div>
                                 
                             </div>
+                                        <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Contact Us</h4>
+                <p>Email: samsonmujabi125@gmail.com</p>
+                <p>Phone: +256778663084</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Follow Us</h4>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                    <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                 
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
                                         <script>
                                             var button=document.getElementById("disable");
                                             button.addEventListener("click",Dis,false);
@@ -113,5 +161,6 @@ List<product>  products = pdts.getAllProducts();
                                         </script>
       
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
     </body>
 </html>

@@ -120,14 +120,14 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="mb-3">
+<!--                        <div class="mb-3">
                             <label for="location" class="form-label">Location</label>
                             <input type="text" class="form-control" id="location" name="location" required>
                         </div>
                         <div class="mb-3">
                             <label for="dateOfBirth" class="form-label">Date of Birth</label>
                             <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
-                        </div>
+                        </div>-->
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
                         </div>
@@ -164,16 +164,16 @@
     String fullName=request.getParameter("fullName");
     String email=request.getParameter("email");
     String password=request.getParameter("password");
-    String dateOfBirth=request.getParameter("dateOfBirth");
+   // String dateOfBirth=request.getParameter("dateOfBirth");
     String gender=request.getParameter("gender");
-    String location=request.getParameter("location");
+ //   String location=request.getParameter("location");
      SimpleDateFormat dateFormat = new SimpleDateFormat("MM-yy--dd");
             String currentDate = dateFormat.format(new Date());
 
             // SQL query with placeholders for the prepared statement
-            String insertQuery = "INSERT INTO customer (customerName, Gender, Location, email, Password, Date_of_Birth, creationDate) " +
+            String insertQuery = "INSERT INTO customer (customerName, Gender, email, Password, creationDate) " +
                   
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?,?,?,?,?)";
             try{
 
            // connection = getConnection();
@@ -182,11 +182,11 @@
             
             preparedStatement.setString(1, fullName);
             preparedStatement.setString(2, gender);
-            preparedStatement.setString(3, location);
-            preparedStatement.setString(4, email);
-            preparedStatement.setString(5, password);
-            preparedStatement.setString(6, dateOfBirth);
-            preparedStatement.setString(7, currentDate); // Insert the current date          
+           // preparedStatement.setString(3, location);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, password);
+           // preparedStatement.setString(6, dateOfBirth);
+            preparedStatement.setString(5, currentDate); // Insert the current date          
             //preparedStatement.executeUpdate();
               int rowsAffected = preparedStatement.executeUpdate();
             

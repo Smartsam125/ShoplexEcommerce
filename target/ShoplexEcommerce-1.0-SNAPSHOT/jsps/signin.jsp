@@ -15,6 +15,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Shoplex</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
@@ -45,7 +51,6 @@
         color: #ff5722; /* Supermarket-style link color */
     }
 </style>
-
 </head>
 <body>
 <div class="container mt-5">
@@ -105,9 +110,25 @@
     session.setAttribute("username",email);
    
     }
+    else{%>
+   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    Toastify({
+        text: "Invalid Log In",
+        duration: 5000, // Duration in milliseconds
+        gravity: "top", // Display the toast notification at the top
+        position: "center",
+        backgroundColor: "#ff5722", // Background color of the toast
+        close: true // Show a close button
+    }).showToast();
+</script>
+  
+   <% }
    
        
    
 %>
+<!-- Toastify JS -->
+
 </body>
 </html>

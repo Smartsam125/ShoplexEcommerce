@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import user.Cart;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 
@@ -20,7 +22,7 @@ public class InsertData extends HttpServlet {
  Statement st=null;
  String query;
  
-    
+    private static final Logger logger=Logger.getLogger(InsertData.class.getName());
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -67,7 +69,8 @@ public class InsertData extends HttpServlet {
              rs.setInt(3,quantityOfpdts);
              rs.setString(4,formatter.format(date));
              rs.executeUpdate();
-             out.println("data inserted successfuly");
+            // out.println("data inserted successfuly");
+            logger.info("Datata Inserted"+query1);
              
                  ArrayList<Cart> cart_list = (ArrayList<Cart>)request.getSession().getAttribute("cart-list");
                  
